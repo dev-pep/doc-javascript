@@ -49,7 +49,7 @@ Para la fecha y hora existe el objeto ***Date***. Se convierten a número dando 
 
 Un *string* es una secuencia ordenada inmutable de valores *Unicode* de 16 bits (no existe el tipo carácter). La indexación de sus elementos (igual que pasa con los *arrays*) es *0-based*. Usa la codificación *UTF-16*. Los caracteres del *basic multilingual plane* se representan con un solo valor, pero podemos encontrar *strings* con más elementos que caracteres (si hay *surrogate pairs*).
 
-Los literales *string* aceptan comillas simples (***'***), dobles (***"***) y *backticks* (***`***). Cualquier tipo acepta los otros tipos en su interior. Se pueden definir *strings* en varias líneas terminando cada línea con una barra invertida (***\***), excepto la última.
+Los literales *string* aceptan comillas simples (***'***), dobles (***"***) y *backticks* (***`***). Cualquier tipo acepta los otros tipos en su interior. Se pueden definir *strings* en varias líneas terminando cada línea con una barra invertida (***\\***), excepto la última.
 
 ```js
 s = "Esto es un \
