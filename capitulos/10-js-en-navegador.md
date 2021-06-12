@@ -81,6 +81,8 @@ Un elemento es un objeto de tipo `Element`, que son todos descendientes del obje
 
 Estos métodos ignoran los objetos que no son `Element`, como texto y comentarios. Si queremos que se ignore nada, hay que usar las propiedades `childNodes`, `firstChild`, `lastChild`, `nextSibling`, `previousSibling`. Para saber el tipo de un nodo concreto, podemos usar la propiedad `nodeType`: 9 (documento), 1 (elemento), 3 (texto), 8 (comentarios). `nodeValue` retorna el contenido de un nodo texto o comentario. `nodeName` retorna la etiqueta *HTML* en mayúsculas.
 
+> Si bien con `querySelector()` puede seleccionarse cualquier tipo de elemento, también están disponibles otras funciones de selección, como `getElementById()` (solo por ID) `getElementsByClassName()` (solo por nombre de la clase).
+
 Para acceder a los atributos de un elemento, disponemos de los métodos `getAttribute()`, `setAttribute()`, `hasAttribute()`, `removeAttribute()`. Pero los elementos que representan elementos *HTML* tienen los atributos directamente accesibles mediante propiedades.
 
 El atributo `class` contiene estilos *CSS*. En *JavaScript* podemos acceder directamente al atributo ***class*** del elemento, podemos acceder a su contenido mediante la propiedad ***classList***, con todos los estilos en un objeto tipo *array*; este objeto dispone de métodos para manipulas estos estilos: `add()`, `remove()`, `contains()` o `toggle()`.
