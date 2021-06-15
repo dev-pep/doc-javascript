@@ -118,8 +118,8 @@ Los métodos pueden definirse así en un literal:
 
 ```js
 let square = {
-  area: function() { return this.side ** 2; },
-  side: 10
+    area: function() { return this.side ** 2; },
+    side: 10
 }
 ```
 Hay un *shorthand*:

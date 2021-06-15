@@ -44,10 +44,10 @@ else  // opcional
 
 ```js
 switch(expr) {
-  case val1: /* código */
-  case val2: /* código */
-  /* ... */
-  default: /* código*/
+    case val1: /* código */
+    case val2: /* código */
+    /* ... */
+    default: /* código*/
 }
 ```
 
@@ -111,17 +111,17 @@ etiq: if(cond)
 
 ```js
 try {
-  /* código a ejecutar */
+    /* código a ejecutar */
 }
 catch(e1) {
-  /* trata error e1 */
+    /* trata error e1 */
 }
 catch(e2) {
-  /* trata error e2 */
+    /* trata error e2 */
 }
 /* otros catch */
 finally {  //opcional
-  /* se ejecuta siempre, pase lo que pase */
+    /* se ejecuta siempre, pase lo que pase */
 }
 ```
 
