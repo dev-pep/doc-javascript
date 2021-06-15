@@ -70,7 +70,7 @@ Para incluir en el *string* apariciones del carácter comilla delimitadora, hay 
 
 Disponemos de ***\0*** (carácter nulo), ***\b*** (retroceso), ***\t*** (tabulador horizontal), ***\n*** (salto de línea), ***\v*** (tabulador vertical), ***\f*** (*form feed*), ***\r*** (retorno de carro), ***\\*** (*backslash*).
 
- ***\xnn*** sirve para especificar un carácter *Unicode* con dos caracteres hexadecimales. ***\unnnn*** hace lo mismo con 4 dígitos hexa, y ***\u{nn...n}*** hace lo propio con una cantidad arbitraria de estos dígitos.
+***\xnn*** sirve para especificar un carácter *Unicode* con dos caracteres hexadecimales. ***\unnnn*** hace lo mismo con 4 dígitos hexa, y ***\u{nn...n}*** hace lo propio con una cantidad arbitraria de estos dígitos.
 
 Delante de cualquier otro carácter, la barra invertida es ignorada.
 
