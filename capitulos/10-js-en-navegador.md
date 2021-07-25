@@ -50,6 +50,7 @@ En este caso, cuando se hace clic sobre el botón se ejecutará primero la que s
 Para eliminar uno de los registros se usa el método `removeEventListener()`.
 
 Cuando se invoca un *event handler*, se le pasa un argumento, que es un objeto `Event`. Propiedades del mismo:
+
 - ***type***: tipo de evento.
 - ***target***: objeto sobre el que ocurre el evento.
 - ***currentTarget***: en eventos que se propagan, objeto en el que se registró el *handler*.

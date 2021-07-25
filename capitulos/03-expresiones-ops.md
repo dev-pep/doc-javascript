@@ -71,11 +71,11 @@ El operador ***+*** también permite concatenar *strings*. Cuando por lo menos u
 
 Los operadores ***+*** y ***-*** pueden ser unarios. Los operadores incrementales ***++*** y ***-*** pueden ser *prefix* o *postfix*.
 
-Los operadores *bitwise* son: *and* (***&***), *or* (***|***), *xor* (***^***), *not* (***~***), desplazamiento izquierdo (***<<***), desplazamiento derecho con signo (***>>***) y desplazamiento derecho con *zero-fill* (***>>>***).
+Los operadores *bitwise* son: *and* (***&***), *or* (***|***), *xor* (***^***), *not* (***~***), desplazamiento izquierdo (***\<<***), desplazamiento derecho con signo (***>>***) y desplazamiento derecho con *zero-fill* (***>>>***).
 
 ### Operadores relacionales
 
-Son: igualdad (***==***), igualdad estricta (***===***), desigualdad (***!=***), desigualdad estricta (***!==***, contrario de ***===***) y los acostumbrados ***<***, ***>***, ***<=*** y ***>=***.
+Son: igualdad (***==***), igualdad estricta (***===***), desigualdad (***!=***), desigualdad estricta (***!==***, contrario de ***===***) y los acostumbrados ***\<***, ***>***, ***\<=*** y ***>=***.
 
 El operador ***in*** espera un operando izquierdo de tipo *string* o convertible a *string*. El operando derecho debe ser un objeto. Retornará ***true*** si el objeto contiene una propiedad con el nombre del *string*.
 

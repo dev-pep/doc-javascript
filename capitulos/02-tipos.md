@@ -31,7 +31,7 @@ Si a un literal entero **decimal** se le añade un punto decimal (***.***) y una
 
 A cualquier literal numérico se le puede añadir una parte exponencial, consistente en un carácter ***e*** (o ***E***), un signo opcional, y un exponente entero decimal.
 
-Para aumentar la legibilidad de los literales numéricos, se pueden intercalar guiones bajos (***_***).
+Para aumentar la legibilidad de los literales numéricos, se pueden intercalar guiones bajos (***\_***).
 
 ### Operaciones matemáticas
 
@@ -56,7 +56,7 @@ s = "Esto es un \
 string en varias líneas."
 ```
 
-Para definir un salto de línea se usará ***\n***. Adicionalmente, un literal definido con *backticks* puede ser multilínea, de tal modo que los saltos de línea tecleados forman parte del *string*.
+Para definir un salto de línea se usará ***\\n***. Adicionalmente, un literal definido con *backticks* puede ser multilínea, de tal modo que los saltos de línea tecleados forman parte del *string*.
 
 Dado que en *HTML* se pueden definir también los *strings* tanto con comillas simples como dobles, se pueden combinar para que no haya interferencias:
 
@@ -66,11 +66,11 @@ Dado que en *HTML* se pueden definir también los *strings* tanto con comillas s
 
 ### Secuencias de escape
 
-Para incluir en el *string* apariciones del carácter comilla delimitadora, hay que incicar *escaped* (prefijado de ***\***) el carácter comilla que estemos usando (***\\"***, ***\\'***, o ***\\`***).
+Para incluir en el *string* apariciones del carácter comilla delimitadora, hay que incicar *escaped* (prefijado de ***\\***) el carácter comilla que estemos usando (***\\"***, ***\\'***, o ***\\`***).
 
-Disponemos de ***\0*** (carácter nulo), ***\b*** (retroceso), ***\t*** (tabulador horizontal), ***\n*** (salto de línea), ***\v*** (tabulador vertical), ***\f*** (*form feed*), ***\r*** (retorno de carro), ***\\*** (*backslash*).
+Disponemos de ***\\0*** (carácter nulo), ***\\b*** (retroceso), ***\\t*** (tabulador horizontal), ***\\n*** (salto de línea), ***\\v*** (tabulador vertical), ***\\f*** (*form feed*), ***\\r*** (retorno de carro), ***\\\\*** (*backslash*).
 
-***\xnn*** sirve para especificar un carácter *Unicode* con dos caracteres hexadecimales. ***\unnnn*** hace lo mismo con 4 dígitos hexa, y ***\u{nn...n}*** hace lo propio con una cantidad arbitraria de estos dígitos.
+***\\xnn*** sirve para especificar un carácter *Unicode* con dos caracteres hexadecimales. ***\\unnnn*** hace lo mismo con 4 dígitos hexa, y ***\\u{nn...n}*** hace lo propio con una cantidad arbitraria de estos dígitos.
 
 Delante de cualquier otro carácter, la barra invertida es ignorada.
 
@@ -86,7 +86,7 @@ Además, si se prefija el nombrede una función a este tipo de literales, se inv
 
 ```js
 `\n`.length;  // retorna 1
-String.raw`\n`.length;  // retorna 2
+String.raw(`\n`).length;  // retorna 2
 ```
 
 Se pueden ver los *backticks* como paréntesis de la llamada.
@@ -105,7 +105,7 @@ La expresión `undefined == null` es cierta, pero `undefined === null` (valor y 
 
 ## Símbolos
 
-Los símbolos sirven para acceder a propiedades de objetos. Normalmente se accede a ellos mediante *strings*. Sin embargo, se puede acceder a estos mediante un símbolo: un código de identificación único que permite acceder a estos elementos. Se crean mediante la función `Symbol()`. Esta función nunca retorna el mismo valor, ya que siempre retorna un ID único. Un símbolo tiene el método `toString()`, que retorna el *string* ***Symbol()***. Si se invoca pasándole un *string* (opcional), ese *string* será retornado por `toString()`: retornará ***Symbol(<st>)***, donde 'st' es ese *string*.
+Los símbolos sirven para acceder a propiedades de objetos. Normalmente se accede a ellos mediante *strings*. Sin embargo, se puede acceder a estos mediante un símbolo: un código de identificación único que permite acceder a estos elementos. Se crean mediante la función `Symbol()`. Esta función nunca retorna el mismo valor, ya que siempre retorna un ID único. Un símbolo tiene el método `toString()`, que retorna el *string* ***Symbol()***. Si se invoca pasándole un *string* (opcional), ese *string* será retornado por `toString()`: retornará ***Symbol(\<st>)***, donde 'st' es ese *string*.
 
 La función `Symbol.for()` es similar, con la diferencia de que el símbolo retornado depende del argumento que se le pasa. En este sentido, la expresión `Symbol.for("texto") == Symbol.for("texto")` retorna ***true***.
 
