@@ -46,12 +46,14 @@ Para saber si un objeto tiene una propiedad propia concreta, se usa el operador 
 Mediante `for/in` se itera por todas las propiedades enumerables del objeto (propias y heredadas).
 
 Para iterar las distintas propiedades del objeto, a parte de hacerlo con `for/in` se puede usar:
+
 - `Object.keys()` retorna un *array* con los nombres (*strings*) de las propiedades **enumerables** del objeto, pero solo las propias, no heredadas.
 - `Object.getOwnPropertyNames()` además retorna los nombres de las propiedades propias que no son enumerables.
 - `Object.getOwnPropertySymbols()` igual que la anterior, pero para propiedades propias que son símbolos.
 - `Reflect.ownKeys()` combina las dos anteriores.
 
 El orden de enumeración de las funciones anteriores (y otras como `JSON.stringify()`) es el siguiente:
+
 - Propiedades *string* cuyos nombres son números no negativos, en orden numérico.
 - Resto de propiedades *string* en el orden que fueron añadidas.
 - Propiedades *symbol* en el orden que fueron añadidas.
