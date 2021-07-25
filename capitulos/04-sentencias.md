@@ -5,7 +5,7 @@ Las sentencias están separadas entre sí por punto y coma (***;***).
 Tipos de sentencias:
 
 - Expresiones: al ejecutarse, se evalúa y retorna un valor. Puede conllevar efectos secundarios.
-- Sentencias compuestas: bloque de sentencias entre llaves (***{}***).
+- Sentencias compuestas: bloque de sentencias entre llaves (***\{}***).
 - Sentencias vacías: un punto y coma extra.
 - Condicionales, bucles y saltos.
 - Declaraciones.
