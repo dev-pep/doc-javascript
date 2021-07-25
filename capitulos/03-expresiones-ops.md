@@ -63,7 +63,7 @@ Si no se le pasan argumentos al constructor, se pueden omitir los paréntisis: `
 
 La mayoría de estos operadores admiten operandos *BigInt* y números regulares, siempre que no se mezclen ambos tipos.
 
-La exponenciación (***\*****) tiene mayor precedencia que división (***/***), multiplicación (***\****) y módulo (***%***), que a su vez tienen mayor precedencia que suma (***+***) y resta (***-***).
+La exponenciación (***\*****) tiene mayor precedencia que división (***/***), multiplicación (***\****) y módulo (***%***), que a su vez tienen mayor precedencia que suma (***+***) y resta (***\-***).
 
 Exponenciación se evalúa de derecha a izquierda. Se puede usar también `Math.pow()`. El módulo funciona también con números no enteros.
 
