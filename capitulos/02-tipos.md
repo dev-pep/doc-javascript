@@ -160,21 +160,23 @@ Las variables se declaran con `let`, y las constantas con `const`. Se pueden dec
 
 ### Scope
 
+#### let y const
+
 El ámbito de la variable (o constante) es la región del código fuente donde se define esta (*block scope*), desde el punto donde se declara hasta el final del bloque. Si está declarada en la misma sentencia `for`, su *scope* es el cuerpo entero de dicho `for`.
 
 Variables y constantes definidas fuera de todo bloque, tienen ámbito global. Es accesible en el archivo fuente donde está definida, a partir del punto donde se declara.
 
-No se puede declarar dos veces la misma varable (o constante) en el mismo ámbito, aunque sí puede hacerse en un *scope* interior.
+No se puede declarar dos veces la misma variable (o constante) en el mismo ámbito, aunque sí puede declararse (*override*) en un *scope* interior.
 
-### var
+#### var
 
-También se pueden declarar variables (no constantes) mediante `var`.
+También se pueden declarar variables (no constantes) mediante `var` (usado, sobre todo para código *legacy*).
 
-Las variables declaradas así dentro de función tienen *scope* en **toda da función**, antes (*hoisting*) y después de la declaración, e independientemente del nivel de anidamiento de la declaración (antes de la declaración tienen valor ***undefined***, aunque la declaración las inicialice).
+Las variables declaradas así dentro de función no tienen *block scope* sino *function scope*, independientemente de si se declaran al principio de la función, o dentro de un bloque interior a esta. Este *scope* se extiende en **toda la función**, tanto antes (*hoisting*) como después de la declaración, e independientemente del nivel de anidamiento de la declaración (antes de la declaración tienen valor ***undefined***, aunque la declaración las inicialice).
 
 Si la declaración está fuera de la función, es una variable global, pero se comporta como una propiedad del objeto global.
 
-Las variables se pueden redeclarar con `var` más de una vez.
+Las variables se pueden redeclarar con `var` más de una vez (no con `let`).
 
 En el modo *strict* no se pueden usar variables o constantes que no estén inicializadas.
 

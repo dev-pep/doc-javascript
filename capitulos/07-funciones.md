@@ -68,9 +68,19 @@ Las funciones pueden ser invocadas implícitamente, como por ejemplo los *getter
 
 ## Argumentos y parámetros
 
-Cuando en la invocación se proporcionen menos argumentos que los parámetros declarados, el resto se establece en ***undefinded***.
+Cuando en la invocación se proporcionen menos argumentos que los parámetros declarados, el resto se establece en ***undefinded***. Si se proporcionan más, se ignoran los excesivos.
 
 Es posible dar valor por defecto a los parámetros; no tienen por qué ser los últimos definidos.
+
+A la hora de tomar los valores de los argumentos en la llamada, se pueden especificar los nombres de parámetro:
+
+```js
+function suma(primero, segundo=10) { return primero + segundo; }
+suma(5, 7);  // retorna 12 (5+7)
+suma(5);  // retorna 15 (5+10)
+suma(segundo=20, primero=5);  // retorna 25 (5+20)
+suma(segundo=20);  // retorna 30 (20+10, se ignora 'segundo=')
+```
 
 Si el último parámetro es `...rest`, recogerá el resto de argumentos que excedan la lista de parámetros de la función. Entonces, el parámetro ***rest*** en la función es un *array* con esos valores.
 

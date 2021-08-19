@@ -4,7 +4,7 @@ Los objetos son colecciones no ordenadas de propiedades, las cuales tienen un no
 
 Los *strings*, números y booleanos, a pesar de no ser objetos, se pueden comportar como objetos inmutables.
 
-Los objetos se pueden crear mediante literales objeto, con `new`, o mediante `Object.create()`. Para acceder a los miembros se hace con sintaxi de punto (`ob.prop`) o de corchetes (`ob["prop"]`), aunque si la propiedad contiene espacios se debe usar la última (`ob["una propiedad"]`).
+Los objetos se pueden crear mediante literales objeto, con `new`, o mediante `Object.create()`. Para acceder a los miembros se hace con sintaxis de punto (`ob.prop`) o de corchetes (`ob["prop"]`), aunque si la propiedad contiene espacios se debe usar la última (`ob["una propiedad"]`).
 
 Mediante `new`, se invoca al constructor:
 
@@ -25,7 +25,7 @@ Un objeto creado a partir de ***Object*** hereda un objeto ***Object.prototype**
 
 Al crear un objeto mediante `Object.create()`, pasamos como argumento el objeto prototipo directamente. Si le pasamos ***null***, el objeto no heredará absolutamente nada, ni siquiera métodos útiles como `toString()`. Si se quiere crear un objeto ordinario, se puede hacer `Object.create(Object.prototype)`.
 
-Si intentamos acceder a una propiedad de un objeto y dicha propiedad no se encuentra entre las propiedades propias del objeto, se buscará en el objeto prototipo que ha heredado el objeto. Si este objeto prototipo tampoco tiene dicha propiedad en sí mismo, pero a su vez tiene un objeto prototipo que ha heredado, se buscará en ese prototipo del prototipo. Y así sucesivamente hasta encontar esa propiedad en la cadena de prototipos, o hasta llegar al final.
+Si intentamos acceder a una propiedad de un objeto y dicha propiedad no se encuentra entre las propiedades propias del objeto, se buscará en el objeto prototipo que ha heredado (una *own property overrides* una heredada). Si este objeto prototipo tampoco tiene dicha propiedad en sí mismo, pero a su vez tiene un objeto prototipo que ha heredado, se buscará en ese prototipo del prototipo. Y así sucesivamente hasta encontrar esa propiedad en la cadena de prototipos, o hasta llegar al final.
 
 ## Propiedades
 
@@ -37,7 +37,7 @@ Cuando hacemos una asignación a una propiedad, si esta no existe, la añade al 
 
 Si un objeto tiene una propiedad heredada (no propia), al asignar valor a la misma, se crea tal propiedad (propia) en el objeto, de modo que enmascara la propiedad del objeto prototipo. Pero si hereda una propiedad *readonly*, no está permitido hacer esa asignación.
 
-A la hora de eliminar propiedades, el comando `delete` solo elimina propiedades propias, no heredadas.
+A la hora de eliminar propiedades, la sentencia `delete` solo elimina propiedades propias, no heredadas.
 
 Para saber si un objeto tiene una propiedad propia concreta, se usa el operador `in`, el método `hasOwnProperty()`, o el método `propertyIsEnumerable()`. Cualquiera de estos métodos precisa un *string* o símbolo. También se puede simplemente acceder a la propiedad.
 
@@ -59,6 +59,8 @@ El orden de enumeración de las funciones anteriores (y otras como `JSON.stringi
 - Propiedades *symbol* en el orden que fueron añadidas.
 El orden de `for/in` no está tan definido, aunque se suele hacer de la forma definida para las propiedades propias, y lo mismo para las propiedades heredadas, e ir siguiendo la cadena de prototipos. Las propiedades enmascaradas no se enumeran.
 
+El método `values()` retorna los **valores** propios del objeto.
+
 ## Copia de objetos
 
 Es posible copiar un objeto mediante la función `Object.assign()`. Esta recibe un primer parámatro con el objeto destino, donde se copiarán todas las propiedades **propias** de los subsiguientes objetos especificados en los argumentos posteriores.
@@ -75,7 +77,7 @@ o = Object.assign({}, osrc1, osrc2,...);
 
 ## Serialización de objetos
 
-Para serializar un objeto se usa `JSON.Stringify()`, y para restaurarlo se usa `JSON.parse()`.
+Para serializar un objeto se usa `JSON.stringify()`, y para restaurarlo se usa `JSON.parse()`.
 
 ## Métodos de objeto
 
@@ -115,8 +117,7 @@ En el ejemplo, se copian las propiedades de dos objetos, a parte de una propieda
 
 Si hay conflictos entre nombres de propiedades, la que prevalece es la última en ser definida.
 
-Los métodos pueden definirse así en un literal:
-
+Los métodos pueden definirse así en un literal (el acceso a la instancia se hace con ***this***):
 
 ```js
 let square = {
@@ -135,4 +136,61 @@ let square = {
 
 El nombre del método puede contener espacios (habrá que usar comillas). Cuando se usa el *shorthand*, se pueden usar como nombre (o símbolo) cualquier expresión entre corchetes.
 
-Se puede definir un método *getter* y/o un método *setter*. Se define añadiendo la palabra `get` o `set` antes del nombre de la función (o delante de la expresión entre corchetes). El nombre del *getter* o *setter* es el nombre de la propiedad que representan. Si se define solo un *setter*, actuará como una propiedad *write-only*.
+Se puede definir un método *getter* y/o un método *setter*. Se define añadiendo la palabra `get` o `set` antes del nombre de la función (o delante de la expresión entre corchetes). Los *getter* y *setter* se comportan sintácticamente como una propiedad, de tal modo que se puede asignar o leer directamente. Si se define solo un *getter* / *setter*, actuará como una propiedad *read-only* / *write-only*. Se verá un ejemplo en el capítulo de clases.
+
+### Destructuring assignment
+
+Supongamos que tenemos el objeto:
+
+```js
+const band = {
+    vocals: "Robert Plant",
+    guitar: "Jimmy Page",
+    bass: "John Paul Jones",
+    drums: "John Bonham"
+}
+```
+
+Este código:
+
+```js
+const vocals = band.vocals;
+const guitar = band.guitar;
+const bass = band.bass;
+const drums = band.drums;
+```
+
+Equivale a:
+
+```js
+const {vocals, guitar, bass, drums} = band;
+```
+
+Si solo deseamos algunos campos:
+
+```js
+const {vocals, drums} = band;
+```
+
+Este código:
+
+```js
+const myVocals = band.vocals;
+const myDrums = band.drums;
+```
+
+Equivale a:
+
+```js
+const {vocals: myVocals, drums: myDrums} = band;
+```
+
+Por ejemplo, es posible crear una función:
+
+```js
+function sings({vocals}) {
+    return `${vocals} sings!`;
+}
+```
+
+Esto extrae (*destructures*) el campo ***vocals*** del objeto que se le pasa por parámetro, que lógicamente debe contener una propiedad ***vocals***.
