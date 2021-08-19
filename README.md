@@ -14,6 +14,7 @@ Mis apuntes de *JavaScript*.
 8. [Clases](capitulos/08-clases.md)
 9. [Módulos](capitulos/09-modulos.md)
 10. [JavaScript en el navegador](capitulos/10-js-en-navegador.md)
+11. [La API Fetch](capitulos/11-api-fetch.md)
 
 ---
 
