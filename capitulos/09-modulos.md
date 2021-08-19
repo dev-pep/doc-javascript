@@ -2,7 +2,16 @@
 
 En *JavaScript* cada archivo de código fuente es un módulo. Todas las constantes, variables, funciones, y clases declaradas en él son privadas del módulo, a no ser que se exporten (con `export`). En un módulo, estos elementos no tienen ámbito global, sino que su ámbito es el módulo.
 
-El código en un módulo se ejecuta en modo estricto. Fuera de un módulo, para tener modo estricto hay que indicar `use strict`.
+El código en un módulo se ejecuta en modo estricto. Fuera de un módulo, para tener modo estricto hay que indicar el *string* `use strict`, al principio de todo de un *script*, o como primera sentencia de una función:
+
+```js
+function foo() {
+    'use strict';
+    /* resto */
+}
+```
+
+En modo estricto hay una serie de cosas que no están permitidas mientras que sí lo están en modo normal, como el uso de variables no declaradas, la eliminación de variables y objetos con `delete`, etc.
 
 Para exportar un elemento, se debe usar `export`, **en el top level** del archivo:
 
