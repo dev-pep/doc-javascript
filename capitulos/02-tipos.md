@@ -156,7 +156,7 @@ Para conversión a números también existen las funciones `parseInt()` y `parse
 
 ## Declaración y asignación
 
-Las variables se declaran con `let`, y las constantas con `const`. Se pueden declarar varias variables (o constantes) en la misma sentencia, separadas por comas. Las varibales pueden inicializarse o no. Las constantes se deben inicializar todas.
+Las variables se declaran con `let`, y las constantes con `const`. Se pueden declarar varias variables (o constantes) en la misma sentencia, separadas por comas. Las variables pueden inicializarse o no. Las constantes se deben inicializar todas.
 
 ### Scope
 
