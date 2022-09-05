@@ -90,13 +90,49 @@ Ejemplo de envío de datos a un servidor:
 
 ```js
 async function postData(unObjeto) {
-    const response = await fetch("http://servidor.com", {
+    const respuesta = await fetch("http://servidor.com", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         }
         body: JSON.stringify(unObjeto)
     });
-    const jsonResponse = await response.json();
+    const jsonResp = await resupesta.json();
 }
+```
+
+## Formularios
+
+Es posible enviar un formulario de forma asíncrona. Para ello definiremos nuestro formulario en *HTML*, y crearemos el objeto formulario mediante la clase ***FormData***. Lo único que habrá que pasarle como argumento al constructor de esta clase será el objeto formulario que deseamos enviar:
+
+```javascript
+const datos = new FormData(document.getElementById('mi-formulario'));
+```
+
+Una vez tengamos este objeto, lo pasaremos como información adicional a `fetch()`:
+
+```javascript
+const respuesta = await fetch("http://servidor.com", {
+    method: "POST",
+    body: datos
+});
+```
+
+> Si el método es ***GET***, no se puede hacer así, ya que este método carece de cuerpo (***body***) en la solicitud.
+
+En este caso, todos los campos del formulario serán enviados, mediante el método indicado en ***method***. Observando este mecanismo, podemos inferir que los atributos ***action*** y ***method*** del formulario *HTML* son innecesarios (aunque se pueden escribir, lo indicado en la función `fetch()` tendrá prioridad).
+
+Por otro lado, antes de enviar la solicitud es posible añadir nuevos campos al formulario programáticamente mediante el método `append()`:
+
+```javascript
+datos.append('email', 'pepe@servidor.com');
+```
+
+Así, no es necesario escribir el formulario en *HTML*. Podríamos construir todo el formulario a partir de un objeto ***FormData*** vacío:
+
+```javascript
+let formulario = new FormData();
+formulario.append('campo1', 'valor1');
+formulario.append('campo2', 'valor2');
+// etc.
 ```
