@@ -2,7 +2,7 @@
 
 Los *arrays* no tienen tipo, y el índice es numérico. Cada elemento puede ser de un tipo distinto, y de hecho se permite cualquier tipo (primitivo, objeto u *array*). Son *zero-based*. Los elementos no tienen por qué ir seguidos: puede haber huecos en la numeración. La propiedad `length` representa el número de elementos, si no hay huecos. Si los hay, es un número superior al índice máximo que tiene contenido.
 
-Los *arrays* pueden construirse mediante un literal *array* (lista de valores entre comillas), y puede contener como elementos otros *arrays* (*arrays* multidimensionales) u objetos. Para dejar huecos, repetir comas. También se puede usar el operador *spread* (***...***) sobre un objeto iterable. Con este operador se puede crear una *shallow copy* del *array*.
+Los *arrays* pueden construirse mediante un literal *array* (lista de valores entre corchetes, separados por comas), y puede contener como elementos otros *arrays* (*arrays* multidimensionales) u objetos. Para dejar huecos, repetir comas. También se puede usar el operador *spread* (***...***) sobre un objeto iterable. Con este operador se puede crear una *shallow copy* del *array*.
 
 ```js
 let hexdigits = [..."0123456789ABCDEF"];  // array con 16 elementos "0", "1",...
