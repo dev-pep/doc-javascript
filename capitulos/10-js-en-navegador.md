@@ -40,7 +40,7 @@ El método para registrar un manejador de eventos es con el método `addEventLis
 
 El método `addEventListener()`, definido para todos los elementos del documento, toma tres argumentos. El primero es el nombre del tipo de evento (p.e. ***click***, ***mouseover***, ***mouseout***, ***keydown***, etc.). El segundo es la función manejadora. En este ejemplo se utilizan las dos formas para registrar un manejador de eventos:
 
-> Si queremos que la función llamada reciba una referencia al objeto donde se ha generado el evento, debemos hacer la llamada pasando `this` como argumento. En este caso, `onclick="miFuncion(this)"`.
+> Si queremos que la función llamada reciba una referencia al objeto donde se ha generado el evento, debemos hacer la llamada pasando `this` como argumento. En este caso, `onclick="miFuncion(this)"`. Por otro lado, si queremos recibir una instancia del objeto evento, incluiremos el argumento `event`. Se pueden incluir ambos.
 
 ```html
 <button id="mybutton">Click me</button>
