@@ -86,7 +86,7 @@ async function getData() {
 
 La expresión asíncrona asociada a una sentencia `await` puede ser, o bien una *promise*, o una función `async`.
 
-Ejemplo de envío de datos a un servidor:
+Ejemplo de envío de datos *JSON* a un servidor, y recepción de una respuesta también *JSON*:
 
 ```js
 async function postData(unObjeto) {
@@ -100,6 +100,18 @@ async function postData(unObjeto) {
     const jsonResp = await resupesta.json();
 }
 ```
+
+## El objeto respuesta
+
+El objeto respuesta retornado por la función `fetch()` tiene una serie de propiedades que nos pueden ser muy útiles:
+
+- ***body***: el contenido de la respuesta.
+- ***headers***: las cabeceras de la respuesta.
+- ***ok***: *booleano* indicando si la respuesta es correcta o no.
+- ***status***: código de estado de la respuesta.
+- ***statusText***: texto correspondiente al código de estado de la respuesta.
+- ***json()***: retorna una promesa que se resuelve con un formato *JSON*.
+- ***text()***: retorna una promesa que se resuelve con un formato de texto.
 
 ## Formularios
 
