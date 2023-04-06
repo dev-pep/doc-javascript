@@ -88,11 +88,36 @@ Estos métodos se invocan desde un objeto (elemento del documento) y van buscand
 
 Con el método `getElementById()` se selecciona un elemento por ID, y con `getElementsByClassName()` por el nombre de la clase (retorna un *array-like* con los elementos encontrados). También disponemos de métodos como `getElementByName()` o `getElementsByTagName()`.
 
-Un elemento es un objeto de tipo `Element`, que son todos descendientes del objeto `Document`. Para un objeto `Element`, encontramos las propiedades `parentNode` (elemento padre, o documento), `children` (*array-like* con los elementos hijo), `childrenElementCount`, `firstElementChild`, `lastElementChild`, `nextElementSibling`, `previousElementSibling`. Cuando no procede, retornan ***null***.
+Un elemento es un objeto de tipo `Element`, que son todos descendientes del objeto `Document`. Para un objeto `Element`, encontramos las propiedades `parentElement` (elemento padre, o documento), `children` (*array-like* con los elementos hijo), `childrenElementCount`, `firstElementChild`, `lastElementChild`, `nextElementSibling`, `previousElementSibling`. Cuando no procede, retornan ***null***.
 
-Estos métodos ignoran los objetos que no son `Element`, como texto y comentarios. Si queremos que se ignore nada, hay que usar las propiedades `childNodes`, `firstChild`, `lastChild`, `nextSibling`, `previousSibling`. Para saber el tipo de un nodo concreto, podemos usar la propiedad `nodeType`: 9 (documento), 1 (elemento), 3 (texto), 8 (comentarios). `nodeValue` retorna el contenido de un nodo texto o comentario. `nodeName` retorna la etiqueta *HTML* en mayúsculas.
+Hay que tener en cuenta que un **elemento** no es exactamente lo mismo que un **nodo**.
 
-Los métodos de tipo `getElementBy*` que retornan más de un elemento, retornan una ***HTMLCollection*** de **elementos**, mientras que `querySelectorAll()` retorna una ***NodeList*** de nodos.
+> Un **elemento** es cualquier objeto del *DOM* representado por una etiqueta, o un par de etiquetas de apertura y cierre (incluyendo el *HTML* interno que contengan). Pero entre elemento y elemento, puede haber otras cosas en el código *HTML*, como caracteres de texto o comentarios.
+>
+> Por otro lado, un **nodo** es todo componente del código *HTML*, incluyendo tanto los **elementos** como todo lo que hay entre ellos. Es decir, todo elementos es un nodo; todo comentario es un nodo; todo texto fuera de las etiquetas *HTML* es un nodo.
+
+Podemos ver un ejemplo de la diferencia entre nodo y objeto:
+
+```HTML
+<table>
+    <thead>
+        <th>Columna 1</th>
+        <th>Columna 2</th>
+    </thead>
+    <tbody>
+        <!-- Esta es una celda de la columna 1: -->
+        <td>Contenido 1</td>
+        <!-- Esta es una celda de la columna 1: -->
+        <td>Contenido 2</td>
+    </tbody>
+</table>
+```
+
+En este caso, el elemento ***tbody*** tiene **dos elementos hijos** (cada una de las celdas), pero tiene **8 elementos hijos**: no solo las celdas, sino los dos comentarios, a parte de las ristras de espacio blanco (que incluyen caracteres *intro* y espacios).
+
+Así, las propiedades vistas más arriba solo tienen en cuenta los elementos (de tipo `Element`). Aunque no sea frecuente, si deseamos acceder a **todos los nodos**, hay que usar las propiedades `parentNode`, `childNodes`, `firstChild`, `lastChild`, `nextSibling`, `previousSibling`. Para saber el tipo de un nodo concreto, podemos usar la propiedad `nodeType`: 9 (documento), 1 (elemento), 3 (texto), 8 (comentario). `nodeValue` retorna el contenido de un nodo texto o comentario. `nodeName` retorna la etiqueta *HTML* en mayúsculas.
+
+Los métodos de tipo `getElementBy*()` que retornan más de un elemento, retornan una ***HTMLCollection*** de **elementos**, mientras que `querySelectorAll()` retorna una ***NodeList*** de nodos.
 
 Las funciones de selección se pueden llamar desde el objeto `document`, o desde cualquier otro. Por ejemplo:
 
