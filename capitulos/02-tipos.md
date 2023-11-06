@@ -86,7 +86,7 @@ Además, si se prefija el nombrede una función a este tipo de literales, se inv
 
 ```js
 `\n`.length;  // retorna 1
-String.raw(`\n`).length;  // retorna 2
+String.raw`\n`.length;  // retorna 2
 ```
 
 Se pueden ver los *backticks* como paréntesis de la llamada.
