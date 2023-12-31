@@ -22,7 +22,7 @@ Combinando y anidando literales *array* y objeto, tenemos el formato *JSON*.
 
 Una expresión de definición de función retorna, de hecho, la función definida.
 
-Las expresiones de acceso a miembros utilizan la sintaxis de punto (***.***) y de corchetes (***[]***):
+Las expresiones de acceso a miembros utilizan la sintaxis de punto (`.`) y de corchetes (`[]`):
 
 ```js
 ob.x = 10;  // acceso a propiedad de objeto con punto
@@ -63,33 +63,33 @@ Si no se le pasan argumentos al constructor, se pueden omitir los paréntisis: `
 
 La mayoría de estos operadores admiten operandos *BigInt* y números regulares, siempre que no se mezclen ambos tipos.
 
-La exponenciación (***\*****) tiene mayor precedencia que división (***/***), multiplicación (***\****) y módulo (***%***), que a su vez tienen mayor precedencia que suma (***+***) y resta (***\-***).
+La exponenciación (`**`) tiene mayor precedencia que división (`/`), multiplicación (`*`) y módulo (`%`), que a su vez tienen mayor precedencia que suma (`+`) y resta (`-`).
 
 Exponenciación se evalúa de derecha a izquierda. Se puede usar también `Math.pow()`. El módulo funciona también con números no enteros.
 
-El operador ***+*** también permite concatenar *strings*. Cuando por lo menos uno de los operandos es *string* (o es un objeto que tiene conversión a *string*), se realiza la concatenación en lugar de la suma.
+El operador `+` también permite concatenar *strings*. Cuando por lo menos uno de los operandos es *string* (o es un objeto que tiene conversión a *string*), se realiza la concatenación en lugar de la suma.
 
-Los operadores ***+*** y ***-*** pueden ser unarios. Los operadores incrementales ***++*** y ***-*** pueden ser *prefix* o *postfix*.
+Los operadores `+` y `-` pueden ser unarios. Los operadores incrementales `++` y `-` pueden ser *prefix* o *postfix*.
 
-Los operadores *bitwise* son: *and* (***&***), *or* (***|***), *xor* (***^***), *not* (***~***), desplazamiento izquierdo (***\<<***), desplazamiento derecho con signo (***>>***) y desplazamiento derecho con *zero-fill* (***>>>***).
+Los operadores *bitwise* son: *and* (`&`), *or* (`|`), *xor* (`^`), *not* (`~`), desplazamiento izquierdo (`<<`), desplazamiento derecho con signo (`>>`) y desplazamiento derecho con *zero-fill* (`>>>`).
 
 ### Operadores relacionales
 
-Son: igualdad (***==***), igualdad estricta (***===***), desigualdad (***!=***), desigualdad estricta (***!==***, contrario de ***===***) y los acostumbrados ***\<***, ***>***, ***\<=*** y ***>=***.
+Son: igualdad (`==`), igualdad estricta, es decir, igualdad de valor y de tipo (`===`), desigualdad (`!=`), desigualdad estricta (`!==`, contrario de `===`) y los acostumbrados `<`, `>`, `<=` y `>=`.
 
-El operador ***in*** espera un operando izquierdo de tipo *string* o convertible a *string*. El operando derecho debe ser un objeto. Retornará ***true*** si el objeto contiene una propiedad con el nombre del *string*.
+El operador `in` espera un operando izquierdo de tipo *string* o convertible a *string*. El operando derecho debe ser un objeto. Retornará ***true*** si el objeto contiene una propiedad con el nombre del *string*.
 
 El operador `instanceof` espera un operando izquierdo de tipo objeto y un operando derecho que identifique una clase. Retorna ***true*** si el objeto pertenece a la clase (o a una derivada).
 
 ### Operadores lógicos
 
-Son *and* (***&&***), *or* (***||***) y *not* (***!***). Los dos primeros cortocircuitan cuando es posible. El funcionamiento de ***||*** es curioso: si el primer operando tiene un valor verdadero, retorna directamente ese valor; de lo contrario, retorna el valor del segundo operando.
+Son *and* (`&&`), *or* (`||`) y *not* (`!`). Los dos primeros cortocircuitan cuando es posible. El funcionamiento de `||` es curioso: si el primer operando tiene un valor verdadero, retorna directamente ese valor; de lo contrario, retorna el valor del segundo operando.
 
 ### Operadores de asignación
 
-El operador ***=*** retorna el valor asignado, y se evalúa de derecha a izquierda (por ejemplo podemos escribir `a = b = 4;`).
+El operador `=` retorna el valor asignado, y se evalúa de derecha a izquierda (por ejemplo podemos escribir `a = b = 4;`).
 
-También se admiten los operadores de asignación con operación, como ***+=***, ***-=***, ***=***, ***&=***, etc.
+También se admiten los operadores de asignación con operación, como `+=`, `-=`, `=`, `&=`, etc.
 
 ### Otros operadores
 
@@ -103,7 +103,7 @@ exp1 ? exp2 : exp3;
 
 Si la primera expresión evalúa a verdadero, retorna la segunda. En caso contrario, la tercera.
 
-El operador ***??*** retorna el valor del primero de los operandos que esté definido:
+El operador `??` retorna el valor del primero de los operandos que esté definido:
 
 ```
 let a = exp1 ?? exp2;
@@ -117,4 +117,4 @@ El operador `delete` espera una propiedad de un objeto, que elimina del mismo.
 
 El operador `void` evalúa su operando, descarta el valor retornado por este, y retorna `undefined`. Útil solo si el operando tiene *side effects*.
 
-El operador coma (***,***) evalúa el primer operando, luego el segundo, y retorna el valor del segundo.
+El operador coma (`,`) evalúa el primer operando, luego el segundo, y retorna el valor del segundo.

@@ -84,9 +84,9 @@ class Coche {
 }
 ```
 
-En este ejemplo, en lugar de acceder a las propiedades ***_marca***, ***_modelo*** y ***_color***, accederemos a las "propiedades" ***marcaCoche***, ***modeloCoche*** y ***colorCoche***. Por convenio, las propiedades que no deben accederse directamente deberían empezar por guión bajo.
+En este ejemplo, en lugar de acceder a las propiedades ***\_marca***, ***\_modelo*** y ***\_color***, accederemos a las "propiedades" ***marcaCoche***, ***modeloCoche*** y ***colorCoche***. Por convenio, las propiedades que no deben accederse directamente deberían empezar por guión bajo.
 
-Sin embargo, las propiedades ***_marca***, ***_modelo*** y ***_color*** siguen siendo accesibles.
+Sin embargo, las propiedades ***\_marca***, ***\_modelo*** y ***\_color*** siguen siendo accesibles.
 
 Para que no lo sean, lo que se puede hacer es usando un método que tiende a desaparecer: construir la clase mediante una *factory function*, y en lugar de añadir esas propiedades, declararlas simplemente como variables locales del constructor. Existe un nuevo método de hacerlo: Últimamente existe la posibilidad de definir **propiedades de tipo privado** (no disponible en todos los navegadores todavía), simplemente prefijando almohadilla (`#`) al nombre de la propiedad. Sin embargo, hay que tener en cuenta que si queremos dar valor a una propiedad privada desde un método (o constructor) debe estar declarada (o inicializada) en la clase (en cualquier punto de esta):
 

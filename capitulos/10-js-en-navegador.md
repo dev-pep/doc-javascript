@@ -82,7 +82,7 @@ En cuanto a `removeEventListener()`, también se puede pasar este tercer argumen
 
 ## Acceso al DOM
 
-El contenido del documento (*DOM*) es accesible a través del objeto `document`. Para seleccionar un elemento del documento, se pueden usar los métodos `querySelector()` y `querySelectorAll()`, que seleccionan a partir de **selectores *CSS***. La primera de estas funciones retorna el primero de los elementos que coinciden con el selector que se pasa como argumentos (o ***null*** si no lo encuentra). La segunda retorna un objeto (*array-like*) con todas las coincidencias.
+El contenido del documento (*DOM*) es accesible a través del objeto `document`. Para seleccionar un elemento del documento, se pueden usar los métodos `querySelector()` y `querySelectorAll()`, que seleccionan a partir de **selectores** ***CSS***. La primera de estas funciones retorna el primero de los elementos que coinciden con el selector que se pasa como argumentos (o ***null*** si no lo encuentra). La segunda retorna un objeto (*array-like*) con todas las coincidencias.
 
 Estos métodos se invocan desde un objeto (elemento del documento) y van buscando jerarquía abajo. Al contrario que `closest()`, que busca jerarquía arriba.
 

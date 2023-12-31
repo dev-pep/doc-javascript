@@ -17,10 +17,10 @@ Cuando se trata de un *array* u objeto, se puede presentar de forma más estruct
 
 *JavaScript* es *case-sensitive*. El espacio en blanco está formado por caracteres espacio, tabulador, saltos de línea, etc., y sirve para separar *tokens*.
 
-Acepta comentarios de línea (`//`) y multilínea (`/*` `*/`).
+Acepta comentarios de línea (`// ...`) y multilínea (`/* ... */`).
 
-En cuanto a los identificadores, pueden empezar por una letra, guión bajo (***\_***) o signo dólar (***\$***). Los subsiguientes caracteres, además, pueden ser numéricos. *JavaScript* utiliza el juego de caracteres *Unicode*. Para identificadores y literales es posible utilizar caracteres *ASCII* para indicar un carácter *Unicode*, utilizando el prefijo `\u` seguido por 4 dígitos hexadecimales, o bien por uno a seis dígitos hexadecimales entre llaves.
+En cuanto a los identificadores, pueden empezar por una letra, guión bajo (`_`) o signo dólar (`$`). Los subsiguientes caracteres, además, pueden ser numéricos. *JavaScript* utiliza el juego de caracteres *Unicode*. Para identificadores y literales es posible utilizar caracteres *ASCII* para indicar un carácter *Unicode*, utilizando el prefijo `\u` seguido por 4 dígitos hexadecimales, o bien por uno a seis dígitos hexadecimales entre llaves.
 
-Se utiliza el punto y coma (***;***) para separar sentencias. Si una línea contiene una sola sentencia, no es obligatorio. También se puede omitir al final del programa o de un bloque.
+Una línea puede contener más de una sentencia. En tal caso se utiliza el punto y coma (`;`) para separarlas. No es obligatorio escribir punto y coma tras la última sentencia de la línea. Es posible escribir una sentencia multilínea, siguiendo las reglas a tal efecto.
 
 Las variables (y constantes) en *JavaScript* no tienen un tipo concreto asignado. Su valor cambia de tipo según el contexto.

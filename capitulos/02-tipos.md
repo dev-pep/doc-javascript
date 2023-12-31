@@ -14,7 +14,7 @@ Los tipos son convertidos automáticamente según el contexto. No hay tipado est
 
 ## Números
 
-*JavaScript* representa los números mediante punto flotante de 64 bits. Algunas operaciones usan los números como enteros de 32 bits para calcular el resultado.
+*JavaScript* representa los números mediante punto flotante de 64 bits. Estos bits incluyen información sobre el signo, la parte entera y la parte decimal.
 
 ### Literales numéricos
 
@@ -23,21 +23,21 @@ Cualquier literal puede llevar, opcionalmente, el signo delante.
 Los literales enteros pueden representarse:
 
 - Secuencia de dígitos decimales (***0-9***) que no empieza por cero (excepto el cero mismo). Representa un entero en base 10.
-- Prefijo ***0x*** (o ***0X***) seguido por una secuencia de dígitos hexadecimales (***0-F***, *case-insensitive*). Representa un entero en base 16.
-- Prefijo ***0b*** (o ***0B***) seguido por una secuencia de dígitos binarios (***0-1***). Representa un entero en base 2.
-- Prefijo ***0o*** (o ***0O***) seguido por una secuencia de dígitos octales (***0-7***). Representa un entero en base 8.
+- Prefijo `0x` (o `0X`) seguido por una secuencia de dígitos hexadecimales (***0-F***, *case-insensitive*). Representa un entero en base 16.
+- Prefijo `0b` (o `0B`) seguido por una secuencia de dígitos binarios (***0-1***). Representa un entero en base 2.
+- Prefijo `0o` (o `0O`) seguido por una secuencia de dígitos octales (***0-7***). Representa un entero en base 8.
 
-Si a un literal entero **decimal** se le añade un punto decimal (***.***) y una parte fraccionaria **decimal**, se obtiene un literal de punto flotante. En este caso, si se omite la parte entera, se considerará esta cero. Si se omite la parte fraccionaria, se considerará un literal entero.
+Si a un literal entero **decimal** se le añade un punto decimal (`.`) y una parte fraccionaria **decimal**, se obtiene un literal de punto flotante. En este caso, si se omite la parte entera, se considerará esta cero. Si se omite la parte fraccionaria, se considerará un literal entero.
 
-A cualquier literal numérico se le puede añadir una parte exponencial, consistente en un carácter ***e*** (o ***E***), un signo opcional, y un exponente entero decimal.
+A cualquier literal numérico se le puede añadir una parte exponencial, consistente en un carácter `e` (o `E`), un signo opcional, y un exponente entero decimal.
 
-Para aumentar la legibilidad de los literales numéricos, se pueden intercalar guiones bajos (***\_***).
+Para aumentar la legibilidad de los literales numéricos, se pueden intercalar guiones bajos (`_`).
 
 ### Operaciones matemáticas
 
-Cuando una operación produce un valor mayor al representable, el resultado es un valor especial: la constante ***Infinity***. Para operaciones con resultado indefinido, retorna la constante ***NaN***. Este último se compara distinto a cualquier valor, incluido a sí mismo.
+Cuando una operación produce un valor mayor al representable, el resultado es un valor especial: la constante ***Infinity*** (y ***-Infinity***). Para operaciones con resultado indefinido, retorna la constante ***NaN***. Este último se compara distinto a cualquier valor, incluido a sí mismo.
 
-No se deberían comparar dos números en punto flotante por igualdad. Por eso existe un nuevo tipo, *BigInt*: enteros de 64 bits. Un literal de este tipo debe llevar el sufijo ***n***. Para convertir a *BigInt* se usa la función `BigInt()`. No se pueden mezclar número regulares con números *BigInt* en una expresión (ninguno de estos tipos es más general que el otro). Sin embargo sí se pueden comparar entre ellos.
+No se deberían comparar dos números en punto flotante por igualdad. Por eso existe un nuevo tipo, *BigInt*: enteros de 64 bits. Un literal de este tipo debe llevar el sufijo `n`. Para convertir a *BigInt* se usa la función `BigInt()`. No se pueden mezclar número regulares con números *BigInt* en una expresión (ninguno de estos tipos es más general que el otro). Sin embargo sí se pueden comparar entre ellos.
 
 El objeto ***Math*** proporciona operaciones matemáticas (no acepta *BigInt*).
 
@@ -49,14 +49,14 @@ Para la fecha y hora existe el objeto ***Date***. Se convierten a número dando 
 
 Un *string* es una secuencia ordenada inmutable de valores *Unicode* de 16 bits (no existe el tipo carácter). La indexación de sus elementos (igual que pasa con los *arrays*) es *0-based*. Usa la codificación *UTF-16*. Los caracteres del *basic multilingual plane* se representan con un solo valor, pero podemos encontrar *strings* con más elementos que caracteres (si hay *surrogate pairs*).
 
-Los literales *string* aceptan comillas simples (***'***), dobles (***"***) y *backticks* (***`***). Cualquier tipo acepta los otros tipos en su interior. Se pueden definir *strings* en varias líneas terminando cada línea con una barra invertida (***\\***), excepto la última.
+Los literales *string* aceptan comillas simples (`'`), dobles (`"`) y *backticks* (`` ` ``). Cualquier tipo de comillas acepta los otros tipos en su interior. Se pueden definir *strings* en varias líneas terminando cada línea con una barra invertida (`\`), excepto la última.
 
 ```js
 s = "Esto es un \
 string en varias líneas."
 ```
 
-Para definir un salto de línea se usará ***\\n***. Adicionalmente, un literal definido con *backticks* puede ser multilínea, de tal modo que los saltos de línea tecleados forman parte del *string*.
+Para definir un salto de línea se usará `\n`. Adicionalmente, un literal definido con *backticks* puede ser multilínea, de tal modo que los saltos de línea tecleados forman parte del *string*.
 
 Dado que en *HTML* se pueden definir también los *strings* tanto con comillas simples como dobles, se pueden combinar para que no haya interferencias:
 
@@ -66,23 +66,23 @@ Dado que en *HTML* se pueden definir también los *strings* tanto con comillas s
 
 ### Secuencias de escape
 
-Para incluir en el *string* apariciones del carácter comilla delimitadora, hay que incicar *escaped* (prefijado de ***\\***) el carácter comilla que estemos usando (***\\"***, ***\\'***, o ***\\`***).
+Para incluir en el *string* apariciones del carácter comilla delimitadora, hay que incicar *escaped* (prefijado de `\`) el carácter comilla que estemos usando (`\"`, `\'`, o `` \` ``).
 
-Disponemos de ***\\0*** (carácter nulo), ***\\b*** (retroceso), ***\\t*** (tabulador horizontal), ***\\n*** (salto de línea), ***\\v*** (tabulador vertical), ***\\f*** (*form feed*), ***\\r*** (retorno de carro), ***\\\\*** (*backslash*).
+Disponemos de `\0` (carácter nulo), `\b` (retroceso), `\t` (tabulador horizontal), `\n` (salto de línea), `\v` (tabulador vertical), `\f` (*form feed*), `\r` (retorno de carro), `\\` (*backslash*).
 
-***\\xnn*** sirve para especificar un carácter *Unicode* con dos caracteres hexadecimales. ***\\unnnn*** hace lo mismo con 4 dígitos hexa, y ***\\u\{nn...n}*** hace lo propio con una cantidad arbitraria de estos dígitos.
+`\xnn` sirve para especificar un carácter *Unicode* con dos caracteres hexadecimales. `\unnnn` hace lo mismo con 4 dígitos hexadecimales, y `\u\{nn...n}` hace lo propio con una cantidad arbitraria de estos dígitos.
 
 Delante de cualquier otro carácter, la barra invertida es ignorada.
 
 ### Operaciones con *strings*
 
-Para concatenar se usa el operador `+`. Para saber la longitud de un *string*, se usa su propiedad `length`. Un *string* tiene numerosas utilidades, pero ninguna cambia el contenido (*strings* son inmutables); en todo caso retornan un nuevo *string*. Sus elementos son accesibles mediante corchetes y un número de índice (***[n]***).
+Para concatenar se usa el operador `+`. Para saber la longitud de un *string*, se usa su propiedad `length`. Un *string* tiene numerosas utilidades, pero ninguna cambia el contenido (*strings* son inmutables); en todo caso retornan un nuevo *string*. Sus elementos son accesibles mediante corchetes y un número de índice (`[n]`).
 
 ### Literales plantilla
 
 Los *strings* definidos con *backticks* (*template literals*) aceptan expresiones *JavaScript* encerradas entre `${` y `}`. A parte, los saltos de línea tecleados pasan a formar parte del contenido.
 
-Además, si se prefija el nombrede una función a este tipo de literales, se invoca esa función pasándole como parámetro el literal. Por ejemplo, la función `String.raw()` retorna el *string* sin procesar los *escapes*:
+Además, si se prefija el nombre de una función a este tipo de literales, se invoca esa función pasándole como parámetro el literal. Por ejemplo, la función `String.raw()` retorna el *string* sin procesar los *escapes*:
 
 ```js
 `\n`.length;  // retorna 1
@@ -105,7 +105,7 @@ La expresión `undefined == null` es cierta, pero `undefined === null` (valor y 
 
 ## Símbolos
 
-Los símbolos sirven para acceder a propiedades de objetos. Normalmente se accede a ellos mediante *strings*. Sin embargo, se puede acceder a estos mediante un símbolo: un código de identificación único que permite acceder a estos elementos. Se crean mediante la función `Symbol()`. Esta función nunca retorna el mismo valor, ya que siempre retorna un ID único. Un símbolo tiene el método `toString()`, que retorna el *string* ***Symbol()***. Si se invoca pasándole un *string* (opcional), ese *string* será retornado por `toString()`: retornará ***Symbol(\<st>)***, donde 'st' es ese *string*.
+Los símbolos sirven para acceder a propiedades de objetos. Normalmente se accede a ellos mediante *strings*. Sin embargo, se puede acceder a estos mediante un símbolo: un código de identificación único que permite acceder a estos elementos. Se crean mediante la función `Symbol()`. Esta función nunca retorna el mismo valor, ya que siempre retorna un ID único. Un símbolo tiene el método `toString()`, que retorna el *string* ***"Symbol()"***. Si se invoca pasándole un *string* (opcional), ese *string* será retornado por `toString()`: retornará ***"Symbol(st)"***, donde ***st*** es ese *string*.
 
 La función `Symbol.for()` es similar, con la diferencia de que el símbolo retornado depende del argumento que se le pasa. En este sentido, la expresión `Symbol.for("texto") == Symbol.for("texto")` retorna ***true***.
 

@@ -2,7 +2,7 @@
 
 Los *arrays* no tienen tipo, y el índice es numérico. Cada elemento puede ser de un tipo distinto, y de hecho se permite cualquier tipo (primitivo, objeto u *array*). Son *zero-based*. Los elementos no tienen por qué ir seguidos: puede haber huecos en la numeración. La propiedad `length` representa el número de elementos, si no hay huecos. Si los hay, es un número superior al índice máximo que tiene contenido.
 
-Los *arrays* pueden construirse mediante un literal *array* (lista de valores entre corchetes, separados por comas), y puede contener como elementos otros *arrays* (*arrays* multidimensionales) u objetos. Para dejar huecos, repetir comas. También se puede usar el operador *spread* (***...***) sobre un objeto iterable. Con este operador se puede crear una *shallow copy* del *array*.
+Los *arrays* pueden construirse mediante un literal *array* (lista de valores entre corchetes, separados por comas), y puede contener como elementos otros *arrays* (*arrays* multidimensionales) u objetos. Para dejar huecos, repetir comas. También se puede usar el operador *spread* (`...`) sobre un objeto iterable. Con este operador se puede crear una *shallow copy* del *array*.
 
 ```js
 let hexdigits = [..."0123456789ABCDEF"];  // array con 16 elementos "0", "1",...
@@ -62,7 +62,7 @@ El método `flatMap()` es como aplicar `map()` y luego allanar con `flat()`. Por
 
 El método `concat()` retorna un *array* con los elementos del *array* llamante, a los que se añaden todos los argumentos del método. Si alguno de los argumentos es un *array*, se concatenan sus elementos (no recursivamente) uno a uno.
 
-Para trabajo con pilas, el método `push()` retorna la nueva longitud del *array*, mientras que `pop()` retorna el elemento. Métodos análogos, pero que trabajan al principio del *array* en lugar de al final, son `unshift()` y `shift()`. Estos cuatro métodos **sí modifican el *array***.
+Para trabajo con pilas, el método `push()` retorna la nueva longitud del *array*, mientras que `pop()` retorna el elemento. Métodos análogos, pero que trabajan al principio del *array* en lugar de al final, son `unshift()` y `shift()`. Estos cuatro métodos **sí modifican el** ***array***.
 
 El método `slice()` retorna un *slice* del *array* (igual que *Python*, incluyendo índices negativos).
 
@@ -72,7 +72,7 @@ El método `fill()` rellena un *array* (o parte de él) con un valor determinado
 
 El método `copyWithin()` copia un *slice* de un *array* a otra posición del *array*. Nunca cambia la `length` del *array*. El primer parámetro indica el índice destino donde se copiará el primer elemento. El segundo elemento indica el índice del primer elemento a ser copiado (por defecto 0). El tercer elemento, junto con el segundo, especifican el *slice* de los elementos a ser copiados (por defecto hasta el final del *array*).
 
-Los métodos `indexOf()` y `lastIndexOf()` buscan el primer (o último, respectivamente) elemento que sea igual (con ***===***) al argumento que se le pasa. Un segundo argumento indica el índice donde empezar la búsqueda (acepta números negativos). Si no lo encuentra, retorna ***-1***.
+Los métodos `indexOf()` y `lastIndexOf()` buscan el primer (o último, respectivamente) elemento que sea igual (con `===`) al argumento que se le pasa. Un segundo argumento indica el índice donde empezar la búsqueda (acepta números negativos). Si no lo encuentra, retorna ***-1***.
 
 El método `includes()` retorna ***true*** si el *array* contiene un elemento igual que el especificado, o ***false*** en caso contrario.
 
@@ -80,7 +80,7 @@ El método `sort()` ordena el *array*, y retorna una referencia al mismo. Sin ar
 
 El método `reverse()` invierte el orden del *array* y retorna una referencia al mismo.
 
-El método `join()` retorna un *string* con todos los elementos del *array* convertidos a *string* y concatenados. Se puede especificar *string* separador (por defecto ***\","***). Es el inverso del método `split()` de los *strings*.
+El método `join()` retorna un *string* con todos los elementos del *array* convertidos a *string* y concatenados. Se puede especificar *string* separador (por defecto ***","***). Es el inverso del método `split()` de los *strings*.
 
 El método `toString()` equivale al método `join()` sin argumentos.
 

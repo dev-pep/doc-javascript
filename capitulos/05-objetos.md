@@ -31,7 +31,7 @@ Si intentamos acceder a una propiedad de un objeto y dicha propiedad no se encue
 
 Si la propiedad no se encuentra, retornará ***undefined***. Si se intenta acceder a una propiedad de algo que evalúe a ***null*** o ***undefined***, se produce error.
 
-Cuando se usa sintaxis de corchetes (***o["prop"]***), lo que hay en el interior de los corchetes debe ser convertible a *string* o *symbol*.
+Cuando se usa sintaxis de corchetes (`o["prop"]`), lo que hay en el interior de los corchetes debe ser convertible a *string* o *symbol*.
 
 Cuando hacemos una asignación a una propiedad, si esta no existe, la añade al objeto. Se puede ver un objeto como un *associative array*.
 
@@ -107,7 +107,7 @@ let o = {
 
 Esto también se extiende a símbolos: una expresión entre corchetes puede retornar un símbolo o un *string*.
 
-El operador *spread* (***...***) esparce, o desempaqueta las propiedades de un objeto (las propias, no las heredadas):
+El operador *spread* (`...`) esparce, o desempaqueta las propiedades de un objeto (las propias, no las heredadas):
 
 ```js
 let odest = {...osrc1, x: 50, ...osrc2};
