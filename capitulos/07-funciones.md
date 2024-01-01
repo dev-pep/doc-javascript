@@ -4,7 +4,7 @@ Las funciones asociadas a un objeto se llaman *métodos*, y tiene acceso al mism
 
 Se pueden asignar funciones a variables. El identificador de la función es en sí una variable que contiene esa función.
 
-Las funciones pueden anidarse, o declararse dentro de un bloque de código. Las funciones anidadas tienen acceso a las variables de la función que las contiene.
+Las funciones pueden anidarse, o declararse dentro de un bloque de código. Las funciones anidadas tienen acceso a las variables del bloque o función que las contiene.
 
 ```js
 function nombre(parms) {
@@ -19,7 +19,8 @@ Si indicamos `return` sin valor, o no incluimos `return`, la función retorna **
 La declaración de una función puede formar parte de una expresión, o formar parte de un argumento en una invocación de otra función:
 
 ```js
-let f = function foo() { /* body */ };
+let f = function foo() { /* body */ };  // nombre de función no es necesario
+let g = function() { /* body */ };
 ```
 
 Se puede definir e invocar al mismo tiempo:
@@ -28,7 +29,7 @@ Se puede definir e invocar al mismo tiempo:
 let tensquared = function(x) { return x * x; }(10);
 ```
 
-Cuando forma parte de una expresión, el nombre de la función es opcional, ya que de hecho aunque indiquemos nombre, no se crea tal variable. Solo será necesario indicarlo para funciones recursivas.
+Cuando forma parte de una expresión, el nombre de la función es opcional, ya que de hecho aunque indiquemos nombre, no se crea tal variable. Solo **será necesario indicarlo para funciones recursivas**.
 
 Cuando se declaran las funciones mediante la sintaxis normal, las funciones pueden utilizarse antes de su declaración (*hoisting*). Sin embargo, si se usa la declaracón dentro de una expresión, esto no se aplica.
 
@@ -47,6 +48,23 @@ const sum = (a, b) => a + b;
 ```
 
 Además, si la lista de parámetros solo contiene uno, se pueden omitir los paréntesis. Si no hay parámetros hay que incluir el par de paréntesis.
+
+### Closures
+
+```js
+function multiplicador(factor)
+{
+    return num => num * factor;
+}
+
+let duplica = multiplicador(2);
+let triplica = multiplicador(3);
+
+console.log(duplica(50));
+console.log(triplica(33));
+```
+
+En este caso vemos que, por ejemplo, `multiplicador(2)` retorna `num => num * 2`.
 
 ## Invocación
 
@@ -78,8 +96,6 @@ A la hora de tomar los valores de los argumentos en la llamada, se pueden especi
 function suma(primero, segundo=10) { return primero + segundo; }
 suma(5, 7);  // retorna 12 (5+7)
 suma(5);  // retorna 15 (5+10)
-suma(segundo=20, primero=5);  // retorna 25 (5+20)
-suma(segundo=20);  // retorna 30 (20+10, se ignora 'segundo=')
 ```
 
 Si el último parámetro es `...rest`, recogerá el resto de argumentos que excedan la lista de parámetros de la función. Entonces, el parámetro ***rest*** en la función es un *array* con esos valores.
