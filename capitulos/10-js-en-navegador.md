@@ -129,7 +129,7 @@ En este caso, el elemento con *ID* ***fila1*** (la primera fila, de tipo `tr`) t
 - El segundo **elemento** `td`.
 - Otro salto de línea con espacios de indentación.
 
-Es decir, no los nodos comprenden tanto los **elementos** ***HTML*** como los comentarios y textos.
+Es decir, los **nodos** están constituidos tanto por los **elementos** ***HTML*** como por otras cosas, como comentarios y textos.
 
 Así, las propiedades vistas más arriba solo tienen en cuenta los elementos (de tipo `Element`). Aunque no sea frecuente, si deseamos acceder a **todos los nodos**, hay que usar las propiedades `parentNode`, `childNodes`, `firstChild`, `lastChild`, `nextSibling`, `previousSibling`. Para saber el tipo de un nodo concreto, podemos usar la propiedad `nodeType`: 9 (documento), 1 (elemento), 3 (texto), 8 (comentario). `nodeValue` retorna el contenido de un nodo texto o comentario. `nodeName` retorna la etiqueta *HTML* en mayúsculas.
 
