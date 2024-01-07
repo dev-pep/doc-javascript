@@ -2,13 +2,13 @@
 
 Los *arrays* no tienen tipo, y el índice es numérico. Cada elemento puede ser de un tipo distinto, y de hecho se permite cualquier tipo (primitivo, objeto u *array*). Son *zero-based*. Los elementos no tienen por qué ir seguidos: puede haber huecos en la numeración. La propiedad `length` representa el número de elementos, si no hay huecos. Si los hay, es un número superior al índice máximo que tiene contenido.
 
-Los *arrays* pueden construirse mediante un literal *array* (lista de valores entre corchetes, separados por comas), y puede contener como elementos otros *arrays* (*arrays* multidimensionales) u objetos. Para dejar huecos, repetir comas. También se puede usar el operador *spread* (`...`) sobre un objeto iterable. Con este operador se puede crear una *shallow copy* del *array*.
+Los *arrays* pueden construirse mediante un literal *array* (lista de valores entre corchetes, separados por comas), y puede contener como elementos otros *arrays* (*arrays* multidimensionales) u objetos. Para dejar huecos, repetir comas. También se puede usar el operador *spread* (`...`) sobre un objeto iterable. Con este operador se puede crear también una *shallow copy* de otro *array*.
 
 ```js
 let hexdigits = [..."0123456789ABCDEF"];  // array con 16 elementos "0", "1",...
 ```
 
-Otra forma de crear un array es mediante el constructor `Array()`, al que se le pasa como argumentos los elementos iniciales (o nada para un *array* vacío). Si se le pasa un solo argumento, este indica el número de elementos del *array*.
+Otra forma de crear un *array* es mediante el constructor `Array()`, al que se le pasa como argumentos los elementos iniciales (o nada para un *array* vacío). Si se le pasa un solo argumento, este indica el número de elementos del *array*.
 
 Esto es similar a `Array.of()`, con la diferencia que en este último caso, al pasarle un solo argumento numérico, se creará un objeto con un solo elemento. Para crear un *array* a partir de cualquier objeto iterable:
 
@@ -88,4 +88,4 @@ Existe un método estático para comprobar si una variable es un *array*: `Array
 
 ## Strings como arrays
 
-Los *strings* se comportan como *arrays* de solo lectura de caracteres *Unicode UTF-16*.
+Los *strings* se comportan como *arrays* de solo lectura, compuesto por caracteres *Unicode UTF-16*.

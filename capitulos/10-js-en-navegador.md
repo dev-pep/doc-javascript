@@ -94,28 +94,50 @@ Hay que tener en cuenta que un **elemento** no es exactamente lo mismo que un **
 
 > Un **elemento** es cualquier objeto del *DOM* representado por una etiqueta, o un par de etiquetas de apertura y cierre (incluyendo el *HTML* interno que contengan). Pero entre elemento y elemento, puede haber otras cosas en el código *HTML*, como caracteres de texto o comentarios.
 >
-> Por otro lado, un **nodo** es todo componente del código *HTML*, incluyendo tanto los **elementos** como todo lo que hay entre ellos. Es decir, todo elementos es un nodo; todo comentario es un nodo; todo texto fuera de las etiquetas *HTML* es un nodo.
+> Por otro lado, un **nodo** es todo componente del código *HTML*, incluyendo tanto los **elementos** como todo lo que hay entre ellos. Es decir, todo elemento es un nodo; todo comentario es un nodo; todo texto fuera de las etiquetas *HTML* es un nodo.
 
 Podemos ver un ejemplo de la diferencia entre nodo y objeto:
 
 ```HTML
 <table>
     <thead>
-        <th>Columna 1</th>
-        <th>Columna 2</th>
+        <tr>
+            <th>Columna 1</th>
+            <th>Columna 2</th>
+        </tr>
     </thead>
     <tbody>
-        <!-- Esta es una celda de la columna 1: -->
-        <td>Contenido 1</td>
-        <!-- Esta es una celda de la columna 1: -->
-        <td>Contenido 2</td>
+        <tr id="fila1">
+            <!-- Esta es una celda de la columna 1: -->
+            <td>Contenido 1</td>
+            <!-- Esta es una celda de la columna 1: -->
+            <td>Contenido 2</td>
+        </tr>
     </tbody>
 </table>
 ```
 
-En este caso, el elemento ***tbody*** tiene **dos elementos hijos** (cada una de las celdas), pero tiene **8 elementos hijos**: no solo las celdas, sino los dos comentarios, a parte de las ristras de espacio blanco (que incluyen caracteres *intro* y espacios).
+En este caso, el elemento con *ID* ***fila1*** (la primera fila, de tipo `tr`) tiene **dos elementos hijos** (cada una de las celdas, o elementos `td`). Pero por otro lado, tiene **9 nodos hijos**:
+
+- Un salto de línea seguido por una serie de espacios de indentación.
+- El primer comentario.
+- Otro salto de línea con espacios de indentación.
+- El primer **elemento** `td`.
+- Otro salto de línea con espacios de indentación.
+- El segundo comentario.
+- Otro salto de línea con espacios de indentación.
+- El segundo **elemento** `td`.
+- Otro salto de línea con espacios de indentación.
+
+Es decir, no los nodos comprenden tanto los **elementos** ***HTML*** como los comentarios y textos.
 
 Así, las propiedades vistas más arriba solo tienen en cuenta los elementos (de tipo `Element`). Aunque no sea frecuente, si deseamos acceder a **todos los nodos**, hay que usar las propiedades `parentNode`, `childNodes`, `firstChild`, `lastChild`, `nextSibling`, `previousSibling`. Para saber el tipo de un nodo concreto, podemos usar la propiedad `nodeType`: 9 (documento), 1 (elemento), 3 (texto), 8 (comentario). `nodeValue` retorna el contenido de un nodo texto o comentario. `nodeName` retorna la etiqueta *HTML* en mayúsculas.
+
+```js
+let fila = document.getElementById("fila1");
+let nodos = fila.childNodes;  // nodos.length es 9
+let elementos = fila.children;  // elementos.length es 2
+```
 
 Los métodos de tipo `getElementBy*()` que retornan más de un elemento, retornan una ***HTMLCollection*** de **elementos**, mientras que `querySelectorAll()` retorna una ***NodeList*** de nodos.
 

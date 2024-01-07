@@ -118,3 +118,9 @@ El operador `delete` espera una propiedad de un objeto, que elimina del mismo.
 El operador `void` evalúa su operando, descarta el valor retornado por este, y retorna `undefined`. Útil solo si el operando tiene *side effects*.
 
 El operador coma (`,`) evalúa el primer operando, luego el segundo, y retorna el valor del segundo.
+
+## Expresiones regulares
+
+Las expresiones regulares son un tipo de objeto que puede definirse mediante una instancia de tipo ***RegExp***, o un literal de expresión regular (una serie de caracteres entre barras: `/ /`).
+
+Dicho objeto posee varios métodos. El más simple es el método `test()`, que retorna un booleano indicando si su parámetro (*string*) es un *match*.
