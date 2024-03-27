@@ -1,4 +1,4 @@
-# La API Fetch
+# Programación asíncrona
 
 ## Promesas y then()
 
@@ -28,15 +28,45 @@ myPromise.then(resultado => {
 
 El método `then()` retorna a su vez una promesa, con lo que pueden encadenarse varios métodos `then()`, uno tras otro. Cada uno de ellos define una función *callback* que recibe como parámetro el valor retornado por la *callback* del `then()` anterior.
 
+De esta forma nos aseguramos que el código dentro de un `then()` no empieza a ejecutarse hasta que el del `then()` anterior no ha retornado un resultado. Pero mientras tanto, el código fuera de la promesa (y la cadena de ***thens***) se puede seguir ejecutando.
+
 La semántica de ***then*** es: se ejecuta primero la *callback* de la promesa; ***then*** (luego) la *callback* del primer `then()`; ***then*** la del siguiente; etc.
 
 El objeto ***Promise*** en sí puede tener tres estados: *pending* (todavía ejecutando), *fulfilled* (resuelto) y *rejected* (rechazado).
 
 Al final de la cadena de ***thens*** se puede encadenar un método `catch()` para el caso que se haya producido un error o rechazo. Allí donde se produzca el error, la ejecución se saltará el resto de la cadena hasta el `catch()`. Este método recibe como parámetro una función *callback* que a su vez recibe como parámetro el error producido.
 
-## Ejemplo: fetch()
+## async y await
 
-La función `fetch()` retorna directamente una promesa. Se le debe pasar como argumento la *URL* del servidor. Si resuelve bien, retornará una respuesta *HTTP* del servidor. Para extraer el contenido *JSON* de la *response*, se debe usar el método `json()` de la misma:
+Una función retornará una promesa simplemente añadiéndole la palabra `async`.
+
+```js
+async function foo1() { /*...*/ }    // función normal
+const foo2 = async () => { /*...*/ }    // arrow function
+```
+
+Por otro lado, la palabra clave `await`, **que solo puede usarse dentro de una función** `async`, se usa para indicar que debe pausarse el código (de la función `async`) hasta que la respuesta esté disponible. Es decir, el código posterior a la sentencia `await` no se ejecutará hasta que se haya resuelto esta.
+
+La expresión asociada a una sentencia `await` es, o bien una *promise*, o una función `async`. Sin embargo, `await` no retorna una promesa o una función asíncrona, sino los datos resueltos por dicha promesa o función asíncrona, o un error. En este último caso, para tratar un posible error durante `await`, se debería colocar dicha sentencia dentro de una cláusula `try`.
+
+```js
+async function asyncHelloWorld() {
+    return "Hello world!";  // podría ser un valor obtenido en una web
+}
+
+async function asyncCaller() {
+  const result = await asyncHelloWorld();
+  console.log(result);   // Hello world!
+}
+
+asyncCaller();
+```
+
+Como vemos en este ejemplo, la función ***asyncCaller()*** espera (*awaits*) al resultado de la función ***asyncHelloWorld()***, la cual retorna una promesa que resuelve al valor de retorno ***Hello world!***. Es decir, el `return` de una función asíncrona no es el valor que retorna dicha función, sino el valor al que resuelve la promesa que de hecho retorna la función.
+
+## La API fetch
+
+La función `fetch()` retorna directamente una promesa. Se le debe pasar como argumento la *URL* del servidor. Si resuelve bien, resolverá a la respuesta *HTTP* del servidor. Para extraer el contenido *JSON* de la *response*, se debe usar el método `json()` de la misma:
 
 ```js
 fetch("http://servidor.com")
@@ -63,18 +93,7 @@ promesa = fetch("http://servidor.com", {
 });
 ```
 
-## async y await
-
-En ocasiones, la cadena de métodos `then()` puede complicar el código, y hacerlo menos legible. Existe una nueva forma de trabajar con promesas que lo hace mucho más claro.
-
-La palabra clave `await` se usa para indicar que debe esperarse (asíncronamete) al resultado de la expresión asíncrona correspondiente. Es importante indicar que solo puede utilizarse esta palabra clave dentro de funciones que estén definidas como asíncronas, y ello se hace mediante otra palabra clave: `async`:
-
-```js
-async function foo1() { /*...*/ }    // función normal
-const foo2 = async () => { /*...*/ }    // arrow function
-```
-
-Así, el ejemplo anterior podría reescribirse como:
+Utilizando `async` y `await`:
 
 ```js
 async function getData() {
@@ -83,8 +102,6 @@ async function getData() {
     return datosJson;
 }
 ```
-
-La expresión asíncrona asociada a una sentencia `await` puede ser, o bien una *promise*, o una función `async`.
 
 Ejemplo de envío de datos *JSON* a un servidor, y recepción de una respuesta también *JSON*:
 

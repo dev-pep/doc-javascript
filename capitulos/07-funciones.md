@@ -41,7 +41,7 @@ Se trata de una sintaxis muy compacta:
 const sum = (a, b) => { return a + b; }
 ```
 
-Si el cuerpo de la función es un solo `return`, todavía se puede hacer más compacto:
+Si el cuerpo de la función tiene una sola línea, no son necesarias las llave. En ese caso, la función retornará el valor que retorne esa línea:
 
 ```js
 const sum = (a, b) => a + b;
