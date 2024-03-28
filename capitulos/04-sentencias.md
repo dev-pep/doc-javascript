@@ -107,7 +107,7 @@ etiq: if(cond)
 }
 ```
 
-### try
+### try / throw
 
 ```js
 try {
@@ -123,6 +123,8 @@ catch(e2) {
 finally {  //opcional
     /* se ejecuta siempre, pase lo que pase */
 }
+
+throw expr;  // expr es una expresión de cualquier tipo
 ```
 
 ## Declaraciones
