@@ -100,6 +100,8 @@ En este caso se lanza la petición al servidor. En cuanto se reciben las cabecer
 
 Existen otros métodos similares del objeto respuesta, como `text()` o `blob()` (*binary large object*). Ambos retornan una promesa.
 
+> Lo que obtendremos finalmente mediante el método `json()` no es un string en formato JSON, sino un objeto construído a partir de la respuesta JSON. Si lo que queremos es el string JSON tal cual, debemos llamar al método `text()`.
+
 La función `fetch()` puede recibir un segundo argumento con informaciones específicas para la solicitud (objeto *request*). Por ejemplo:
 
 ```js
