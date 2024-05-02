@@ -57,11 +57,11 @@ const foo2 = async () => { /*...*/ }    // función arrow
 
 Por otro lado, la palabra clave `await`, **que solo puede usarse dentro de una función** ***async***, se usa para indicar que debe pausarse el código, y no reanudarlo hasta que la respuesta esté disponible. Es decir, el código posterior a la sentencia `await` no se ejecutará hasta que se haya resuelto esta.
 
-> `await` convierte el código asíncrono en síncrono dentro de la función `async`. Sin embargo, en el momento en que la función esté esperando, dicha función se suspende para que otras tareas se ejecuten.
-
 La expresión asociada a una sentencia `await` es, o bien una *promise*, o una llamada a una función `async` (que es, funcionalmente, igual que una promise). Sin embargo, `await` no retorna una promesa o una función asíncrona, sino los datos resueltos por dicha promesa o función asíncrona.
 
-En caso de error durante el código asíncrono al que está esperando `await`, se debe tratar mediante cláusulas `try` / `catch`, con lo que se debería colocar la sentencia `await` dentro de una cláusula `try` si es que esperamos la posibilidad de error.
+Es decir, al encontrarse con una sentencia `await`, la función actual (`async function`) se suspenderá, y en caso de que haya otras tareas en la cola, se irán ejecutando también, hasta que se suspendan y se pueda retomar la ejecución de la función inicial (si es que está ya resuelta o rechazada la promesa).
+
+En caso de error durante la ejecución de la promesa (en segundo plano), se debe tratar mediante cláusulas `try` / `catch`, con lo que se debería colocar la sentencia `await` dentro de una cláusula `try`.
 
 ```js
 async function asincrona1() {
