@@ -38,7 +38,7 @@ Para resolver el resultado, la función asociada a un método `then()` solo tien
 
 > Para que un ***then*** realice un rechazo, puede levantar una excepción, ya sea porque el código la levanta por sí mismo, o mejor mediante `throw`.
 
-Por lo explicado hasta ahora, vemos que el código de la función asociada a un ***then*** no empieza a ejecutarse hasta que el ***then*** anterior no ha resuelto. Pero mientras tanto, el código fuera de la promesa (y la cadena de ***thens***) sigue ejecutándose.
+Por lo explicado hasta ahora, vemos que el código de la función asociada a un ***then*** no empieza a ejecutarse hasta que el ***then*** anterior no ha resuelto. Pero mientras tanto, el código fuera de la promesa (y fuera de la cadena de ***thens***) sigue ejecutándose.
 
 Al final de la cadena de ***thens*** se puede encadenar un método `catch()` para el caso que se haya producido alguna excepción en algún `then()` o en la promesa inicial (esto incluye una llamada a la función de rechazo por parte de dicha promesa: esa llamada es una excepción en toda regla que se debe tratar obligatoriamente). Allí donde se produzca el error, la ejecución se saltará el resto de la cadena hasta el `catch()` final. Este método recibe como parámetro una función *callback* que a su vez recibe como parámetro el error producido.
 
@@ -57,9 +57,11 @@ const foo2 = async () => { /*...*/ }    // función arrow
 
 Por otro lado, la palabra clave `await`, **que solo puede usarse dentro de una función** ***async***, se usa para indicar que la función debe suspenderse hasta que el objeto que estamos esperando (un objeto esperable) se resuelva o rechace, en cuyo momento la ejecución estará lista para proseguir. Es decir, el código posterior a la sentencia `await` (dentro de la misma función) no se ejecutará hasta que se haya resuelto esta.
 
-La expresión asociada a una sentencia `await` es, o bien una *promise*, o una llamada a una función `async` (que es, funcionalmente, igual que una promise). Sin embargo, `await` no retorna una promesa o una función asíncrona, sino los datos resueltos por dicha promesa o función asíncrona.
+La expresión asociada a una sentencia `await` es, o bien una *promise*, o una llamada a una función `async` (que es, funcionalmente, igual que una promise). Sin embargo, `await` no retorna una promesa o una función asíncrona, sino que recoge y retorna el valor de retorno de dicha promesa o función asíncrona, es decir, la resolución de esta.
 
-Es decir, al encontrarse con una sentencia `await`, la función actual (`async function`) se suspenderá, y en caso de que haya otras tareas en la cola, se irán ejecutando también, hasta que se suspendan y se pueda retomar la ejecución de la función inicial (si es que está ya resuelta o rechazada la promesa).
+Es decir, al encontrarse con una sentencia `await`, la función actual (`async function`) se suspenderá y quedará en una cola, donde seguirá ejecutándose en segundo plano hasta llegar a su resolución o rechazo (excepción). En tal caso ya puede ser retomada su ejecución en primer plano.
+
+Dicha cola va recibiendo tareas suspendidas y estas van saliendo a medida que terminan su ejecución (cuando les toca el turno).
 
 En caso de error durante la ejecución de la promesa (en segundo plano), se debe tratar mediante cláusulas `try` / `catch`, con lo que se debería colocar la sentencia `await` dentro de una cláusula `try`.
 
