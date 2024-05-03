@@ -30,11 +30,13 @@ myPromise.then(resultado => {  // función arrow con un solo parámetro: resulta
 
 Es decir, `then()` no hace más que esperar y recoger el resultado de la promesa, para tratarlo mediante su propia función asociada.
 
-En caso de que deseemos encadenar varios métodos `then()`, uno tras otro (por tener todos menos el último un comportamiento asíncrono), dicho método retorna a su vez una promesa. Cada uno de ellos define su propia función *callback* para tratar el resultado resuelto por el `then()` anterior.
+En caso de que deseemos encadenar varios métodos `then()`, uno tras otro (por tener todos menos el último un comportamiento asíncrono), dicho método retorna a su vez una promesa. Cada uno de ellos define su propia función *callback* para tratar el resultado resuelto por la función del `then()` anterior.
 
-> Si el último ***then*** tuviera un comportamiento asíncrono, nadie recogería su resultado.
+El último ***then*** de la cadena no debe retornar ningún valor. Aunque técnicamente puede hacerlo, nadie recogería ese resultado, con lo que sería inútil retornarlo.
 
 Para resolver el resultado, la función asociada a un método `then()` solo tiene que retornar un valor mediante `return`. Si el valor que retorna es un objeto promesa, es decir, si "resuelve a una promesa", en realidad resolverá a lo que dicha promesa resuelva.
+
+Si por ejemplo definimos una promesa con su cadena de `then()`, y a continuación otra promesa con su cadena, independiente de la primera, al no ser bloqueante el código de la promesa, ambas cadenas se ejecutarían de forma concurrente. Igual si hay más de dos. Si embargo si después de una cadena hay código síncrono, y después otra cadena, el código síncrono se ejecutaría tras la creación de la primera promesa (antes de ejecutar el primer `then()` de esta), pero la segunda cadena no se ejecutaría (ni ningún `then()` de la primera cadena) hasta que el código síncrono hubiese terminado. Cuando este código termina, se crea la segunda promesa, y las dos cadenas prosiguen concurrentemente.
 
 > Para que un ***then*** realice un rechazo, puede levantar una excepción, ya sea porque el código la levanta por sí mismo, o mejor mediante `throw`.
 
@@ -59,7 +61,7 @@ Por otro lado, la palabra clave `await`, **que solo puede usarse dentro de una f
 
 La expresión asociada a una sentencia `await` es, o bien una *promise*, o una llamada a una función `async` (que es, funcionalmente, igual que una promise). Sin embargo, `await` no retorna una promesa o una función asíncrona, sino que recoge y retorna el valor de retorno de dicha promesa o función asíncrona, es decir, la resolución de esta.
 
-Es decir, al encontrarse con una sentencia `await`, la función actual (`async function`) se suspenderá y quedará en una cola, donde seguirá ejecutándose en segundo plano hasta llegar a su resolución o rechazo (excepción). En tal caso ya puede ser retomada su ejecución en primer plano.
+Es decir, al encontrarse con una sentencia `await`, la función actual (`async function`) se suspenderá y quedará en una cola, donde **seguirá ejecutándose en segundo plano** hasta llegar a su resolución o rechazo (excepción). La función se ejecuta estando en la cola, incluyendo posibles sentencias `await`. En todo caso, hasta que no se resuelva (`return`) o rechace (excepción), seguirá en cola. Cuando se resuelva o rechace, ya puede ser retomada la función que esperaba esta tarea, para seguir con su ejecución en primer plano.
 
 Dicha cola va recibiendo tareas suspendidas y estas van saliendo a medida que terminan su ejecución (cuando les toca el turno).
 
